@@ -72,18 +72,10 @@ const FileUpload = () => {
       // Handle success response
       if (response.status === 200) {
         setStatus('success');
-      } else {
-        setStatus('error');
-        setErrorMessage('Upload failed with unexpected error.');
       }
     } catch (error) {
       setStatus('error');
-      // Improved error message for failed upload
-      if (error.response) {
-        setErrorMessage(`Server Error: ${error.response.data.error || 'Unknown error'}`);
-      } else {
-        setErrorMessage('Network Error: Failed to upload. Please check your connection.');
-      }
+      setErrorMessage('Upload failed. Please try again.');
       console.error('Upload error:', error);
     } finally {
       setIsLoading(false);
@@ -134,7 +126,7 @@ const FileUpload = () => {
       {status === 'error' && (
         <div className="error">
           <AlertCircle size={20} />
-          {errorMessage || 'An error occurred. Please try again.'}
+          {errorMessage}
         </div>
       )}
 
