@@ -1,5 +1,8 @@
+// App.js
 import React from 'react';
-import FileUpload from './FileUpload';
+import './App.css'; // Importing the CSS file
+import FileUpload from './FileUpload';  // Import the FileUpload component
+
 
 function App() {
   return (
@@ -11,3 +14,4 @@ function App() {
 }
 
 export default App;
+
