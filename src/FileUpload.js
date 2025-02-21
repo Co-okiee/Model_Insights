@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 import { Upload, CheckCircle, AlertCircle } from 'lucide-react';
 
 const FileUpload = () => {
@@ -51,18 +52,39 @@ const FileUpload = () => {
     setProgress(0);
     setStatus(null);
 
-    try {
-      // Simulate upload progress
-      for (let i = 0; i <= 100; i += 10) {
-        await new Promise(resolve => setTimeout(resolve, 200));
-        setProgress(i);
-      }
+    // Create form data to send to the backend
+    const formData = new FormData();
+    formData.append('model', file);
 
-      // Simulate successful upload
-      setStatus('success');
+    try {
+      // Send file to the backend via axios
+      const response = await axios.post('http://localhost:5000/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        // Monitor upload progress
+        onUploadProgress: (progressEvent) => {
+          const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setProgress(percent);
+        },
+      });
+
+      // Handle success response
+      if (response.status === 200) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        setErrorMessage('Upload failed with unexpected error.');
+      }
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Upload failed. Please try again.');
+      // Improved error message for failed upload
+      if (error.response) {
+        setErrorMessage(`Server Error: ${error.response.data.error || 'Unknown error'}`);
+      } else {
+        setErrorMessage('Network Error: Failed to upload. Please check your connection.');
+      }
+      console.error('Upload error:', error);
     } finally {
       setIsLoading(false);
     }
@@ -112,7 +134,7 @@ const FileUpload = () => {
       {status === 'error' && (
         <div className="error">
           <AlertCircle size={20} />
-          {errorMessage}
+          {errorMessage || 'An error occurred. Please try again.'}
         </div>
       )}
 
