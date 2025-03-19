@@ -1,7 +1,6 @@
 import os
 import h5py
 import numpy as np
-import tempfile
 import json
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
@@ -14,76 +13,57 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['ALLOWED_EXTENSIONS'] = {'h5', 'onnx'}
+app.config['ALLOWED_EXTENSIONS'] = {'h5'}
 
 CORS(app)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
-def extract_h5_contents(h5file):
+def extract_model_info(h5file):
     """
-    Recursively extract contents of an H5 file including datasets, attributes, and group structure.
+    Extract only key details from an H5 model file.
     """
-    contents = {}
-    
-    def convert_to_native(value):
-        """Convert numpy types to native Python types for JSON serialization."""
-        if isinstance(value, np.ndarray):
-            # Convert numpy arrays to lists
-            return value.tolist()
-        elif isinstance(value, (np.int64, np.int32)):
-            # Convert numpy integers to Python integers
-            return int(value)
-        elif isinstance(value, (np.float32, np.float64)):
-            # Convert numpy floats to Python floats
-            return float(value)
-        elif isinstance(value, bytes):
-            # Convert bytes to string
-            return value.decode('utf-8')
-        return value
+    model_info = {
+        "layers": [],
+        "total_parameters": 0,
+        "optimizer": None,
+        "loss_function": None
+    }
 
-    def extract_attributes(obj):
-        """Extract attributes of a dataset or group."""
-        attrs = {}
-        for key, value in obj.attrs.items():
-            attrs[key] = convert_to_native(value)
-        return attrs
+    try:
+        # Extracting model architecture if stored
+        if "model_config" in h5file.attrs:
+            model_info["architecture"] = json.loads(h5file.attrs["model_config"])
 
-    def visit_item(name, obj):
-        """Process each item (dataset or group) in the H5 file."""
-        if isinstance(obj, h5py.Dataset):
-            item_info = {
-                'type': 'dataset',
-                'shape': obj.shape,
-                'dtype': str(obj.dtype),
-                'attributes': extract_attributes(obj)
-            }
-            
-            # For small datasets, include the actual data
-            if np.prod(obj.shape) < 1000:  # Limit to avoid memory issues
-                try:
-                    data = obj[()]
-                    item_info['data'] = convert_to_native(data)
-                except Exception as e:
-                    item_info['data_error'] = str(e)
-            else:
-                item_info['data'] = f"Large dataset: {np.prod(obj.shape)} elements"
-                
-        elif isinstance(obj, h5py.Group):
-            item_info = {
-                'type': 'group',
-                'attributes': extract_attributes(obj)
-            }
-            
-        contents[name] = item_info
-        
-    h5file.visititems(visit_item)
-    
-    # Add root level attributes
-    contents['root_attributes'] = extract_attributes(h5file)
-    
-    return contents
+        # Extract optimizer and loss function if stored
+        model_info["optimizer"] = h5file.attrs.get("optimizer", "").decode("utf-8") if "optimizer" in h5file.attrs else None
+        model_info["loss_function"] = h5file.attrs.get("loss", "").decode("utf-8") if "loss" in h5file.attrs else None
+
+        def visit_layer(name, obj):
+            if isinstance(obj, h5py.Group):
+                # Extract layer details
+                layer = {"name": name, "weights": 0, "trainable": None}
+
+                # Check if the group contains weight names (indicating a layer)
+                if "weight_names" in obj.attrs:
+                    layer["weights"] = len(obj.attrs["weight_names"])
+
+                # Check if the layer has a trainable attribute
+                layer["trainable"] = obj.attrs.get("trainable", "Unknown")
+
+                # Add to model info
+                model_info["layers"].append(layer)
+
+        h5file.visititems(visit_layer)
+
+        # Total parameters count
+        model_info["total_parameters"] = sum(layer["weights"] for layer in model_info["layers"])
+
+    except Exception as e:
+        return {"error": f"Failed to extract model info: {str(e)}"}
+
+    return model_info
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -91,7 +71,7 @@ def upload_file():
         return jsonify({"error": "No file part"}), 400
 
     file = request.files['model']
-    
+
     if file.filename == '':
         return jsonify({"error": "No selected file"}), 400
 
@@ -99,31 +79,21 @@ def upload_file():
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
-        
+
         try:
             with h5py.File(file_path, 'r') as f:
-                # Extract detailed contents
-                contents = extract_h5_contents(f)
-                
-                # Store the extracted information in a JSON file
-                json_path = os.path.join(UPLOAD_FOLDER, f"{filename}_contents.json")
+                model_info = extract_model_info(f)
+
+                # Save extracted info to a JSON file
+                json_path = os.path.join(app.config['UPLOAD_FOLDER'], f"{filename}_contents.json")
                 with open(json_path, 'w') as json_file:
-                    json.dump(contents, json_file, indent=2)
-                
-                # Generate a basic summary
-                summary = {
-                    "filename": filename,
-                    "total_items": len(contents) - 1,  # Subtract 1 for root_attributes
-                    "groups": sum(1 for item in contents.values() if isinstance(item, dict) and item.get('type') == 'group'),
-                    "datasets": sum(1 for item in contents.values() if isinstance(item, dict) and item.get('type') == 'dataset'),
-                    "root_attributes": len(contents.get('root_attributes', {}))
-                }
-                
-                return jsonify({
-                    "message": "File processed successfully",
-                    "summary": summary,
-                    "contents": contents
-                }), 200
+                    json.dump(model_info, json_file, indent=2)
+
+            return jsonify({
+                "message": "File processed successfully",
+                "model_info": model_info,
+                "json_path": json_path
+            }), 200
 
         except Exception as e:
             return jsonify({
