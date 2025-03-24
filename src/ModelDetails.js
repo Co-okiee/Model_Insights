@@ -20,7 +20,7 @@ const ModelDetails = () => {
           className="px-5 py-3 bg-green-500 text-white rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-green-600"
           onClick={() => navigate("/shap")}
         >
-          SHAP
+          SHAP parthiiii
         </button>
         <button 
           className="px-5 py-3 bg-purple-500 text-white rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-purple-600"
