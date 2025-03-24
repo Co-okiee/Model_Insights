@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Upload, CheckCircle, AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -9,7 +10,9 @@ const FileUpload = () => {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const [errorMessage, setErrorMessage] = useState('');
+  const [showDetailsButton, setShowDetailsButton] = useState(false); // NEW STATE
   const fileInputRef = useRef(null);
+  const navigate = useNavigate(); // NAVIGATION HOOK
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -72,6 +75,7 @@ const FileUpload = () => {
       // Handle success response
       if (response.status === 200) {
         setStatus('success');
+        setShowDetailsButton(true);
       }
     } catch (error) {
       setStatus('error');
@@ -137,6 +141,16 @@ const FileUpload = () => {
           disabled={isLoading}
         >
           {isLoading ? 'Uploading...' : 'Upload Model'}
+        </button>
+      )}
+
+      {/* NEW BUTTON TO VIEW MODEL INSIGHTS */}
+      {showDetailsButton && (
+        <button 
+          className="details-button"
+          onClick={() => navigate('/model-details')}
+        >
+          View Model Insights
         </button>
       )}
     </div>
