@@ -1,0 +1,353 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import axios from 'axios';
+
+// Pastel Color Palette
+const PASTEL_COLORS = {
+  background: {
+    dark: '#F0E5D8',   // Soft Peach
+    light: '#E6F3E6'   // Mint Cream
+  },
+  text: {
+    dark: '#4A4A4A',   // Charcoal
+    light: '#2C5E2E'   // Dark Forest Green
+  },
+  primary: '#9FD8CB',  // Pastel Teal
+  secondary: '#F4D4BC', // Soft Apricot
+  accent: '#DFB5B5',   // Pastel Rose
+  highlight: '#B0E0E6' // Powder Blue
+};
+
+// Dark/Light Mode Context
+const ThemeContext = React.createContext({
+  isDarkMode: true,
+  toggleTheme: () => {}
+});
+
+// Theme Provider Component
+const ThemeProvider = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? JSON.parse(savedTheme) : true;
+  });
+
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem('theme', JSON.stringify(newTheme));
+  };
+
+  const theme = useMemo(() => ({
+    isDarkMode,
+    toggleTheme
+  }), [isDarkMode]);
+
+  return (
+    <ThemeContext.Provider value={theme}>
+      <div 
+        style={{
+          backgroundColor: isDarkMode ? PASTEL_COLORS.background.dark : PASTEL_COLORS.background.light,
+          color: isDarkMode ? PASTEL_COLORS.text.dark : PASTEL_COLORS.text.light,
+          minHeight: '100vh',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        {children}
+      </div>
+    </ThemeContext.Provider>
+  );
+};
+
+// Theme Toggle Button Component
+const ThemeToggle = () => {
+  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
+
+  return (
+    <button 
+      onClick={toggleTheme} 
+      style={{
+        background: 'none',
+        border: 'none',
+        fontSize: '24px',
+        cursor: 'pointer',
+        transition: 'transform 0.2s',
+        transform: isDarkMode ? 'rotate(0deg)' : 'rotate(180deg)'
+      }}
+      aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+    >
+      {isDarkMode ? '🌙' : '☀️'}
+    </button>
+  );
+};
+
+const DEFAULT_MODEL_SUMMARY = {
+  total_layers: 0,
+  total_parameters: 0,
+  optimizer: 'N/A',
+  loss_function: 'N/A',
+  layers: []
+};
+
+const ModelDetails = ({ modelSummary = DEFAULT_MODEL_SUMMARY }) => {
+  const [analysis, setAnalysis] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { isDarkMode } = React.useContext(ThemeContext);
+
+  const { 
+    total_layers, 
+    total_parameters, 
+    optimizer, 
+    loss_function, 
+    layers 
+  } = modelSummary || DEFAULT_MODEL_SUMMARY;
+
+  const handleAnalyzeModel = async () => {
+    const GROQ_API_KEY = process.env.REACT_APP_GROQ_API_KEY;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.post(
+        'https://api.groq.com/openai/v1/chat/completions',
+        {
+          model: 'gemma2-9b-it',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are a helpful AI assistant analyzing machine learning model architecture.'
+            },
+            {
+              role: 'user',
+              content: `Provide a comprehensive analysis of this machine learning model:
+                Total Layers: ${total_layers}
+                Total Parameters: ${total_parameters}
+                Optimizer: ${optimizer}
+                Loss Function: ${loss_function}
+                Layers: ${JSON.stringify(layers, null, 2)}
+                
+                Please include:
+                1. Architectural insights
+                2. Potential performance characteristics
+                3. Optimization recommendations`
+            }
+          ],
+          temperature: 0.7,
+          max_tokens: 1000
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${GROQ_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          timeout: 30000
+        }
+      );
+
+      const groqAnalysis = response.data?.choices?.[0]?.message?.content || 'No analysis available';
+      setAnalysis(groqAnalysis);
+
+    } catch (err) {
+      console.error('Analysis error:', err);
+      setError(err.response?.data?.error || err.message || 'Unexpected error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cardStyle = {
+    backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
+    borderRadius: '12px',
+    padding: '20px',
+    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+    margin: '15px 0',
+    transition: 'all 0.3s ease'
+  };
+
+  return (
+    <div 
+      style={{
+        maxWidth: '800px',
+        margin: '0 auto',
+        padding: '20px',
+        fontFamily: 'Arial, sans-serif'
+      }}
+    >
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px'
+      }}>
+        <h1 style={{
+          color: PASTEL_COLORS.text.light,
+          fontSize: '2em',
+          fontWeight: 300
+        }}>
+          Machine Learning Model Insights
+        </h1>
+        <ThemeToggle />
+      </div>
+
+      <div style={cardStyle}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '15px'
+        }}>
+          {[
+            { label: 'Total Layers', value: total_layers || 0 },
+            { label: 'Total Parameters', value: total_parameters || 0 },
+            { label: 'Optimizer', value: optimizer || 'N/A' },
+            { label: 'Loss Function', value: loss_function || 'N/A' }
+          ].map((item, index) => (
+            <div 
+              key={index} 
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                backgroundColor: PASTEL_COLORS.highlight,
+                padding: '15px',
+                borderRadius: '8px'
+              }}
+            >
+              <span style={{ 
+                fontSize: '0.9em', 
+                opacity: 0.7,
+                marginBottom: '5px' 
+              }}>
+                {item.label}
+              </span>
+              <span style={{ 
+                fontSize: '1.2em', 
+                fontWeight: 'bold',
+                color: PASTEL_COLORS.text.light 
+              }}>
+                {item.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        margin: '20px 0'
+      }}>
+        <button 
+          onClick={handleAnalyzeModel}
+          disabled={loading}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: PASTEL_COLORS.primary,
+            color: PASTEL_COLORS.text.light,
+            border: 'none',
+            borderRadius: '6px',
+            cursor: loading ? 'not-allowed' : 'pointer',
+            transition: 'all 0.3s ease',
+            opacity: loading ? 0.6 : 1
+          }}
+        >
+          {loading ? 'Analyzing...' : 'Analyze with Groq'}
+        </button>
+      </div>
+
+      {error && (
+        <div style={{
+          backgroundColor: 'rgba(255, 100, 100, 0.1)',
+          border: '1px solid salmon',
+          padding: '15px',
+          borderRadius: '8px',
+          margin: '15px 0'
+        }}>
+          <p style={{ color: 'salmon' }}>🚨 {error}</p>
+        </div>
+      )}
+
+      {analysis && (
+        <div style={cardStyle}>
+          <h3 style={{ 
+            color: PASTEL_COLORS.text.light,
+            marginBottom: '15px' 
+          }}>
+            Detailed Model Analysis
+          </h3>
+          <div>
+            {analysis.split('\n').map((paragraph, index) => (
+              <p 
+                key={index} 
+                style={{ 
+                  marginBottom: '10px',
+                  lineHeight: '1.6' 
+                }}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div style={cardStyle}>
+        <h3 style={{ 
+          color: PASTEL_COLORS.text.light,
+          marginBottom: '15px' 
+        }}>
+          Layer Breakdown
+        </h3>
+        <table style={{ 
+          width: '100%', 
+          borderCollapse: 'separate', 
+          borderSpacing: '0' 
+        }}>
+          <thead>
+            <tr>
+              {['Layer Name', 'Parameters', 'Estimated Impact'].map((header, idx) => (
+                <th 
+                  key={idx} 
+                  style={{
+                    padding: '12px',
+                    textAlign: 'left',
+                    backgroundColor: PASTEL_COLORS.secondary,
+                    color: PASTEL_COLORS.text.light
+                  }}
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {(layers || []).map((layer, index) => (
+              <tr 
+                key={index} 
+                style={{ 
+                  backgroundColor: index % 2 ? PASTEL_COLORS.highlight : 'transparent'
+                }}
+              >
+                <td style={{ padding: '12px' }}>{layer.name || `Layer ${index + 1}`}</td>
+                <td style={{ padding: '12px' }}>{layer.parameters || 0}</td>
+                <td style={{ padding: '12px' }}>
+                  {layer.parameters > 1000000 ? 'High' : 
+                   layer.parameters > 100000 ? 'Medium' : 'Low'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+// Wrapper Component to include Theme Provider
+const ModelDetailsWrapper = (props) => {
+  return (
+    <ThemeProvider>
+      <ModelDetails {...props} />
+    </ThemeProvider>
+  );
+};
+
+export default ModelDetailsWrapper;

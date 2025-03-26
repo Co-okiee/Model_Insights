@@ -1,0 +1,1282 @@
+{
+  "model_summary": {
+    "total_layers": 318,
+    "total_parameters": 386,
+    "optimizer": null,
+    "loss_function": null,
+    "layers": [
+      {
+        "name": "model_weights",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_1",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_10",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_11",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_12",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_13",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_14",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_15",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_16",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_17",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_18",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_19",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_2",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_20",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_21",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_22",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_23",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_24",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_25",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_26",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_27",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_28",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_29",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_3",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_30",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_31",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_32",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_33",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_34",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_35",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_36",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_37",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_38",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_39",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_4",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_40",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_41",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_42",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_43",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_44",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_45",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_46",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_47",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_48",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_49",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_5",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_50",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_51",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_52",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_53",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_54",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_55",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_56",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_57",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_58",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_59",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_6",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_60",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_61",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_62",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_63",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_64",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_65",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_66",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_67",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_68",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_69",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_7",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_70",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_71",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_72",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_73",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_74",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_75",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_76",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_77",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_78",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_79",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_8",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_80",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_81",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_82",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_83",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_84",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_85",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_86",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_87",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_88",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_89",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_9",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_90",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_91",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_92",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/activation_93",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_1",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_2",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_3",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_4",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_5",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_6",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_7",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/average_pooling2d_8",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/batch_normalization",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_1",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_10",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_11",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_12",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_13",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_14",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_15",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_16",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_17",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_18",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_19",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_2",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_20",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_21",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_22",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_23",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_24",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_25",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_26",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_27",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_28",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_29",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_3",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_30",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_31",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_32",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_33",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_34",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_35",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_36",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_37",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_38",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_39",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_4",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_40",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_41",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_42",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_43",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_44",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_45",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_46",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_47",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_48",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_49",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_5",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_50",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_51",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_52",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_53",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_54",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_55",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_56",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_57",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_58",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_59",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_6",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_60",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_61",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_62",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_63",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_64",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_65",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_66",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_67",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_68",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_69",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_7",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_70",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_71",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_72",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_73",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_74",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_75",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_76",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_77",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_78",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_79",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_8",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_80",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_81",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_82",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_83",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_84",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_85",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_86",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_87",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_88",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_89",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_9",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_90",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_91",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_92",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/batch_normalization_93",
+        "parameters": 3
+      },
+      {
+        "name": "model_weights/concatenate",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/concatenate_1",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/conv2d",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_1",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_10",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_11",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_12",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_13",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_14",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_15",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_16",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_17",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_18",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_19",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_2",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_20",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_21",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_22",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_23",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_24",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_25",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_26",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_27",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_28",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_29",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_3",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_30",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_31",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_32",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_33",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_34",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_35",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_36",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_37",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_38",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_39",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_4",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_40",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_41",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_42",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_43",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_44",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_45",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_46",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_47",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_48",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_49",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_5",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_50",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_51",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_52",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_53",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_54",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_55",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_56",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_57",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_58",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_59",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_6",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_60",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_61",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_62",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_63",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_64",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_65",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_66",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_67",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_68",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_69",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_7",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_70",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_71",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_72",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_73",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_74",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_75",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_76",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_77",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_78",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_79",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_8",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_80",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_81",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_82",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_83",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_84",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_85",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_86",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_87",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_88",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_89",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_9",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_90",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_91",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_92",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/conv2d_93",
+        "parameters": 1
+      },
+      {
+        "name": "model_weights/dense",
+        "parameters": 2
+      },
+      {
+        "name": "model_weights/dense_1",
+        "parameters": 2
+      },
+      {
+        "name": "model_weights/dropout",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/global_max_pooling2d",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/input_layer",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/max_pooling2d",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/max_pooling2d_1",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/max_pooling2d_2",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/max_pooling2d_3",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed0",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed1",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed10",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed2",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed3",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed4",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed5",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed6",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed7",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed8",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed9",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed9_0",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/mixed9_1",
+        "parameters": 0
+      },
+      {
+        "name": "model_weights/top_level_model_weights",
+        "parameters": 0
+      },
+      {
+        "name": "optimizer_weights",
+        "parameters": 6
+      }
+    ]
+  }
+}
